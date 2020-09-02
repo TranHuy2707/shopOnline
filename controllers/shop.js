@@ -1,8 +1,6 @@
 const product = require('../models/product');
 const { model } = require('mongoose');
 const path = require('path');
-const multer = require('multer');
-const upload = multer({ dest : './public/uploads' });
 
 module.exports = {
     index : function (req, res) {
@@ -29,9 +27,5 @@ module.exports = {
 
     addProducts : function (req, res) {
         res.render('site/admin/postProduct');
-    },
-
-    postProduct : async (req, res) => {
-        console.log(req.file, req.body);
     }
 }

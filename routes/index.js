@@ -3,6 +3,11 @@ const { model } = require('mongoose');
 const path = require('path');
 const router = express.Router();
 const productController = require('../controllers/shop');
+const multer = require('multer');
+const upload = multer({ dest : './public/uploads' }).single('img');
+const product = require('../models/product')
+
+//config file upload
 
 router.get('/', productController.index);
 
@@ -16,30 +21,29 @@ router.get('/cart', productController.shop_cart);
 
 router.get('/add', productController.addProducts);
 
-router.post('/product', productController.postProduct);
-//create product
-// router.post('/product', async (req, res) => {
-//     console.log(req.body)
-//     console.log(req.file)
+router.post('/product', upload, function (req, res) {
+    console.log(req.body, req.file);
 
-//     const { name,
-//             detail,
-//             price,
-//             size } = req.body
+    const {
+        name,
+        price,
+        detail,
+        size
+    } = req.body
 
-//     img = upload.single('img')
-//     const newPostData = {
-//         name : name,
-//         detail : detail,
-//         price : price,
-//         size : size,
-//         img : req.body.img.path
-//     }
+    const img = req.file.path.split('\\').slice(1).join('\\')
 
-//     newPostData.save()
-//     //const newPost = new product(newPostData)
-//     //await newPost.save()
-//     res.redirect('/add')
-// });
+    const newPostData = {
+        name : name,
+        price : price,
+        detail : detail,
+        img : img,
+        size : size
+    }
+
+    const newPost = new product(newPostData)
+    newPost.save();
+    res.redirect('/add');
+})
 
 module.exports = router;
