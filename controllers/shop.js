@@ -3,8 +3,9 @@ const { model } = require('mongoose');
 const path = require('path');
 
 module.exports = {
-    index : function (req, res) {
-        res.render('site/page/index');
+    index : async (req, res) => {
+        const products = await product.find().lean().sort();
+        res.render('site/page/index', { product : products });
     },
 
     contact : function (req, res) {
@@ -13,7 +14,6 @@ module.exports = {
 
     shop : async (req, res) => {
         const products = await product.find().lean().sort();
-        console.log("show");
         res.render('site/page/shop-grid', {product : products});
     },
 

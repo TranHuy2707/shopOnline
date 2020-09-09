@@ -20,8 +20,20 @@ const postSchema = new Schema ({
         type : String,
         require : true
     },
+    img1 : {
+        type : String,
+        require : false
+    },
+    img2 : {
+        type : String,
+        require : false
+    },
+    img3 : {
+        type : String,
+        require : false
+    },
     size : {
-        type : Number,
+        type : String,
         require : true
     }
 })
