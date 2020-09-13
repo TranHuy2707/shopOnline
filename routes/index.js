@@ -11,9 +11,6 @@ const upload = multer({dest : './public/uploads'}).fields([{ name: 'img', maxCou
 
 const product = require('../models/product');
 const { loginSystem } = require('../controllers/shop');
-
-const account = [{ username: 'admin', password: 'admin' }]
-
 //config file upload
 
 router.get('/', productController.index);
@@ -26,18 +23,13 @@ router.get('/checkout', productController.checkout);
 
 router.get('/cart', productController.shop_cart);
 
-router.get('/add', productController.addProducts);
+router.get('/add/Category', productController.addCategory);
 
-router.get('/login', function (req, res) {
-    res.render('site/admin/login')
-    console.log(req.body);
-    if (account.indexOf(data) = [{ username: 'admin', password: 'admin' }] ){
-        res.redirect('site/admin/postProduct')
-    }
-});
+router.get('/add/Products', productController.addProducts);
 
 router.post('/product', upload, function (req, res) {
 
+    console.log(req.body);
     const {
         name,
         price,
@@ -63,8 +55,33 @@ router.post('/product', upload, function (req, res) {
 
     const newPost = new product(newPostData)
     newPost.save();
-    res.redirect('/add');
+
+    //bảo mật kém
+
+    res.redirect('/add/Products');
 })
+
+router.get('/login', function (req, res) {
+    res.render('site/admin/login');
+})
+
+router.post("/login", function (req, res) {
+    console.log(req.body);
+    if (req.body.username == "admin" && req.body.password == "admin123"){
+        res.render('site/admin/postAdmin');
+    }
+    else {
+        res.send("Dang nhap sai")
+    }
+})
+
+
+
+// router.get('/add', function (req, res) {
+//     res.render('site/admin/postProduct');
+// })
+
+
 
 router.get('/:id', async(req, res) => {
 

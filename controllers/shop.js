@@ -27,5 +27,9 @@ module.exports = {
 
     addProducts : function (req, res) {
         res.render('site/admin/postProduct');
+    },
+
+    addCategory : function (req, res) {
+        res.render('site/admin/postCategory');
     }
 }

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Đăng sản phẩm</title>
+    <title>Đanh mục sản phục</title>
 
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <link href="../css/dropzone.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="css/custom.min.css" rel="stylesheet">
+    <link href="../css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -34,41 +34,14 @@
 						<div class="clearfix"></div>
 					</div>
 					<div class="x_content">
-						<form class="form-horizontal form-label-left" action="/product" enctype="multipart/form-data" method="POST">
+						<form class="form-horizontal form-label-left">
 							<div class="form-group row">
-								<label class="control-label col-md-3" for="name" >Tên Sản Phẩm <span class="required">*</span>
+								<label class="control-label col-md-3" for="list" >Danh mục<span class="required">*</span>
 								</label>
 								<div class="col-md-12">
-									<input type="text" required name="name" class="form-control col-md-7 ">
+									<input type="text" required name="list" class="form-control col-md-7 ">
 								</div>
 							</div>
-							<div class="form-group row">
-								<label class="control-label col-md-3" for="detail">Chi Tiết <span class="required">*</span>
-								</label>
-								<div class="col-md-12">
-									<input type="text" required name="detail" class="form-control col-md-7 ">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="control-label col-md-3" for="size">Size <span class="required">*</span>
-								</label>
-								<div class="col-md-12">
-									<input type="text" required name="size" class="form-control col-md-7 ">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="control-label col-md-3" for="price">Giá <span class="required">*</span>
-								</label>
-								<div class="col-md-12">
-									<input type="text" required name="price" class="form-control col-md-7 ">
-								</div>
-							</div>
-							<br>
-							<input type="file" name="img">
-							<input type="file" name="img1">
-							<input type="file" name="img2">
-							<input type="file" name="img3">
-							<br>
 							<br>
 							<button type="submit" class="btn btn-primary">Tạo Sản Phẩm Mới</button>
 						</form>
