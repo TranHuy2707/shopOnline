@@ -35,6 +35,10 @@ const postSchema = new Schema ({
     size : {
         type : String,
         require : true
+    },
+    id : {
+        type : String,
+        require : true
     }
 })
 
