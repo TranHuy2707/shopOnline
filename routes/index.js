@@ -12,7 +12,6 @@ const upload = multer({dest : './public/uploads'}).fields([{ name: 'img', maxCou
 const product = require('../models/product');
 const productCategory = require('../models/productCategory');
 const { loginSystem } = require('../controllers/shop');
-//config file upload
 
 router.get('/', productController.index);
 
@@ -94,10 +93,6 @@ router.post("/login", function (req, res) {
 router.get('/:id', async(req, res) => {
     const products = await product.findOne({ _id: req.params.id }).lean()
     res.render('site/page/detailProduct', { product: products })
-})
-
-router.get('/add-to-cart/:id', function (req, res, next) {
-    
 })
 
 module.exports = router;
